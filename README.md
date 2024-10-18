@@ -7,6 +7,3 @@ Este repositório contém:
 - [Exercícios](./exercicios)
 - [Documentação](./CursoUdemyJs.docx)
 
----
-
-Aproveite o curso e bons estudos!
