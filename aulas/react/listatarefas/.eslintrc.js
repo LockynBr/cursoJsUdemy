@@ -9,7 +9,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:prettier/recommended',
+    'prettier', // Certifique-se de que este é apenas 'prettier'
   ],
   globals: {
     Atomics: 'readonly',
@@ -23,7 +23,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier', 'react-hooks'],
+  plugins: ['react', 'react-hooks', 'prettier'],
   settings: {
     react: {
       version: 'detect',
@@ -31,5 +31,6 @@ module.exports = {
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
+    'prettier/prettier': ['error'],
   },
 };
