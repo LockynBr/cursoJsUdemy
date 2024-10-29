@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 
-// Form
-import { FaPlus } from 'react-icons/fa';
-
-//Tasks
-import { FaEdit, FaWindowClose } from 'react-icons/fa';
+import Form from './Form';
+import Tasks from './Tasks';
 
 import './Main.css';
 
@@ -15,13 +12,34 @@ export default class Main extends Component {
     index: -1,
   };
 
+  componentDidMount() {
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+
+    if (!tasks) return;
+
+    this.setState({ tasks });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { tasks } = this.state;
+
+    if (tasks === prevState.tasks) return;
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { tasks, index } = this.state;
     let { newTask } = this.state;
     newTask = newTask.trim();
 
-    if (tasks.indexOf(newTask) !== -1) return;
+    if (!newTask) return;
+
+    if (tasks.indexOf(newTask) !== -1) {
+      alert('Essa tarefa já existe!');
+      return
+    }
 
     const newsTasks = [...tasks];
 
@@ -70,30 +88,18 @@ export default class Main extends Component {
     return (
       <div className="main">
         <h1>Lista de Tarefas.</h1>
-        <form onSubmit={this.handleSubmit} action="#" className="form">
-          <input onChange={this.handleChange} type="text" value={newTask} />
-          <button type="submit">
-            <FaPlus />
-          </button>
-        </form>
 
-        <ul className="tasks">
-          {tasks.map((task, index) => (
-            <li key={task}>
-              {task}
-              <span>
-                <FaEdit
-                  onClick={(e) => this.handleEdit(e, index)}
-                  className="buttonEdit"
-                />
-                <FaWindowClose
-                  onClick={(e) => this.handleDelete(e, index)}
-                  className="buttonDelete"
-                />
-              </span>
-            </li>
-          ))}
-        </ul>
+        <Form
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          newTask={newTask}
+        />
+
+        <Tasks
+          handleEdit={this.handleEdit}
+          handleDelete={this.handleDelete}
+          tasks={tasks}
+        />
       </div>
     );
   }
