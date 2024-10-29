@@ -1,6 +1,7 @@
 :root {
-  --background-primary: #0a4f70;
-  --background-secundary: #f04c64;
+  --deep-blue: #0a5071;
+  --coral-pink: #f04c64;
+  --skye-blue: #51c5de;
 }
 
 .main {
@@ -36,9 +37,51 @@
   border: none;
   width: 40px;
   height: 40px;
-  background: var(--background-secundary);
+  background: var(--coral-pink);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.tasks {
+  margin-top: 30px;
+}
+
+.tasks li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  transition: all 600ms;
+}
+
+.tasks li:hover {
+  background-color: var(--skye-blue);
+}
+
+.tasks li .buttonEdit {
+  margin-right: 15px;
+  color: var(--skye-blue);
+}
+
+.tasks li .buttonDelete {
+  margin-right: 15px;
+  color: var(--coral-pink);
+}
+
+.tasks li:hover .buttonEdit,
+.tasks li:hover .buttonDelete {
+  color: black;
+}
+
+.tasks li .buttonEdit,
+.tasks li .buttonDelete {
+  cursor: pointer;
+  transition: all 600ms;
+}
+
+.tasks li span {
+  display: flex;
+  align-items: center;
 }
