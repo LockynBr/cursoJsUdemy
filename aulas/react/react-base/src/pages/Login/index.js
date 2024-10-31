@@ -11,6 +11,7 @@ export default function Login() {
         Login <small>Olá</small>
       </Title>
       <Paragraph>Bla bla bla bla bla bla</Paragraph>
+      <button type="button">Enviar</button>
     </Container>
   );
 }
