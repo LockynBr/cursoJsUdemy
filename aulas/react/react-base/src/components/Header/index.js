@@ -19,7 +19,7 @@ export default function Header() {
       <Link to="/logout">
         <FaSignInAlt size={24} />
       </Link>
-      {botaoClicado ? 'Clicado' : 'Não Clicado'}
+      <Link>{botaoClicado ? 'Clicado' : 'Não Clicado'}</Link>
     </Nav>
   );
 }
