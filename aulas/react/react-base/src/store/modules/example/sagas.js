@@ -4,10 +4,10 @@ import * as actions from './actions';
 import * as types from '../types';
 
 const request = () =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve) => {
     setTimeout(() => {
-      reject();
-    }, 2000);
+      resolve();
+    }, 600);
   });
 
 function* exampleRequest() {
@@ -17,7 +17,9 @@ function* exampleRequest() {
     yield put(actions.buttonClickedSucess());
   } catch (e) {
     // Se der erro chama a action de erro
-    toast.error('Deu erro!');
+    toast.error('Deu erro!', {
+      icon: false,
+    });
     yield put(actions.buttonClickedFailure());
   }
 }
