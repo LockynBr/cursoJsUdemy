@@ -19,7 +19,7 @@ export default function Login() {
       <Title isGray={false}>
         Login <small>Olá</small>
       </Title>
-      <Paragraph>Bla bla bla bla bla bla</Paragraph>
+      <Paragraph>Lorem Ipsum is simply dummy text.</Paragraph>
       <button type="button" onClick={handleClick}>
         Enviar
       </button>
